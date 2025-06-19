@@ -1,22 +1,22 @@
-// server.js
 const express = require('express');
 const path = require('path');
 const app = express();
-
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+// Default static folder for React
+const clientBuildPath = path.join(__dirname, 'client', 'build');
+app.use(express.static(clientBuildPath));
 
+// API route
 app.get('/api/date', (req, res) => {
   res.json({ date: new Date().toString() });
 });
 
-// For any other routes, serve the React frontend
+// SPA fallback
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

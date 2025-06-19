@@ -1,12 +1,20 @@
-import React from 'react';
+// client/src/App.js
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  const now = new Date().toLocaleString();
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    fetch('/api/date')
+      .then((res) => res.json())
+      .then((data) => setDate(data.date));
+  }, []);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '100px' }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
       <h1>Hello, World!</h1>
-      <p>Current Date and Time: {now}</p>
+      <p>Current date and time:</p>
+      <strong>{date}</strong>
     </div>
   );
 }

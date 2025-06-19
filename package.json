@@ -1,7 +1,6 @@
 {
-  "name": "node-react-app",
+  "name": "node-react-vite-app",
   "version": "1.0.0",
-  "description": "A sample Node.js + React project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,9 +8,5 @@
   },
   "dependencies": {
     "express": "^4.18.4"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "license": "MIT"
+  }
 }
